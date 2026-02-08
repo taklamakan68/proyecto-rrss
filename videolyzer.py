@@ -22,6 +22,8 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import json
 from datetime import datetime
 import time
+from dotenv import load_dotenv
+load_dotenv()
 
 try:
     import cloudinary
@@ -54,16 +56,15 @@ import colorsys
 
 
 class GeneradorVideoPexels:
-    PEXELS_API_KEY = "F6GzmrWmMIc4ZYuuk1x47Uwc1dKrm1TVtJL5SuIZSgjd9fdmkLaajyUs"
+    PEXELS_API_KEY = os.getenv("PEXELS_API_KEY", "")
     EFECTOS = ['zoom_in', 'zoom_out', 'pan_left', 'pan_right', 'fade']
     IDEAS_BUSQUEDA = ["mindfulness", "yoga", "meditation", "zen", "spiritual", "hindu", "La India", "karma", "dharma", "hinduismo", "budismo"]
     
-    # Credenciales de Cloudinary por defecto
     CLOUDINARY_DEFAULTS = {
-        'cloud_name': 'dbqisdwxn',
-        'api_key': '595556985437699',
-        'api_secret': 'IQOcViq2OMa1Oe-M_CTFSgP0ogg'
-    }
+    'cloud_name': os.getenv('CLOUDINARY_CLOUD_NAME', ''),
+    'api_key': os.getenv('CLOUDINARY_API_KEY', ''),
+    'api_secret': os.getenv('CLOUDINARY_API_SECRET', '')
+}
     
     def __init__(self, api_key=None, resolucion=(1080, 1920), json_path=None, 
                  cloudinary_cloud_name=None, cloudinary_api_key=None, cloudinary_api_secret=None):
