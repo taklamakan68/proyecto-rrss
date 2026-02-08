@@ -1,5 +1,13 @@
 {
+  "name": "bot-instagram-mindfulness",
+  "version": "1.0.0",
+  "description": "Bot automatizado de Instagram con mindfulness",
+  "main": "ejecutar_bucle.js",
+  "scripts": {
+    "start": "node ejecutar_bucle.js"
+  },
   "dependencies": {
-    "puppeteer": "^24.37.2"
+    "puppeteer": "^24.37.2",
+    "dotenv": "^16.0.3"
   }
 }

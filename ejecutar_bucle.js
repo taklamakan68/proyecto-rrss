@@ -1,12 +1,5 @@
 const { exec } = require('child_process');
 
-// Rutas de los archivos
-const archivos = [
-    'C:\\Users\\carlo\\Desktop\\Agni\\generador_mindfulness.py',
-    'C:\\Users\\carlo\\Desktop\\Agni\\videolyzer.py',
-    'C:\\Users\\carlo\\Desktop\\Agni\\instagram.js'
-];
-
 // Función para ejecutar un archivo
 function ejecutar(comando, nombre) {
     return new Promise((resolve) => {
@@ -25,15 +18,30 @@ function ejecutar(comando, nombre) {
     });
 }
 
-// Ejecutar los 3 archivos en secuencia
-async function ejecutarTodo() {
-    console.log('=== INICIANDO EJECUCIÓN ===\n');
+// Ejecutar los 3 archivos en secuencia INFINITAMENTE
+async function ejecutarBucleInfinito() {
+    let iteracion = 1;
     
-    await ejecutar(`python "${archivos[0]}"`, 'generador_mindfulness.py');
-    await ejecutar(`python "${archivos[1]}"`, 'videolyzer.py');
-    await ejecutar(`node "${archivos[2]}"`, 'instagram.js');
-    
-    console.log('\n=== PROCESO COMPLETADO ===');
+    while (true) {
+        console.log(`\n${'='.repeat(70)}`);
+        console.log(`🔄 ITERACIÓN #${iteracion} - ${new Date().toLocaleString()}`);
+        console.log('='.repeat(70));
+        
+        await ejecutar('python generador_mindfulness.py', 'generador_mindfulness.py');
+        await ejecutar('python videolyzer.py', 'videolyzer.py');
+        await ejecutar('node instagram.js', 'instagram.js');
+        
+        console.log(`\n✅ Ciclo ${iteracion} completado`);
+        console.log('⏳ Esperando 5 minutos para el próximo ciclo...\n');
+        
+        // Esperar 5 minutos (300000 ms)
+        await new Promise(resolve => setTimeout(resolve, 300000));
+        
+        iteracion++;
+    }
 }
 
-ejecutarTodo();
+console.log('🚀 INICIANDO BOT DE INSTAGRAM 24/7');
+console.log('Presiona Ctrl+C para detener\n');
+
+ejecutarBucleInfinito();
