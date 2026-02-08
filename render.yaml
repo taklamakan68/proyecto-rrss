@@ -2,7 +2,7 @@ services:
   - type: web
     name: bot-instagram-mindfulness
     env: node
-    buildCommand: npm install && pip install -r requirements.txt
+    buildCommand: bash render-build.sh
     startCommand: npm start
     envVars:
       - key: GROQ_API_KEY
@@ -10,4 +10,12 @@ services:
       - key: INSTAGRAM_USERNAME
         sync: false
       - key: INSTAGRAM_PASSWORD
+        sync: false
+      - key: PEXELS_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
         sync: false

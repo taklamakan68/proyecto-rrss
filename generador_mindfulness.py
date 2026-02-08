@@ -114,8 +114,8 @@ class GeneradorMindfulness:
         """
         self.api_key = api_key or self.GROQ_API_KEY
         
-        # Ruta por defecto
-        ruta_base = r"C:\Users\carlo\Desktop\Agni"
+        # Ruta por defecto (compatible con Linux y Windows)
+        ruta_base = os.path.dirname(os.path.abspath(__file__)) or "."
         
         # Si archivo_json es solo un nombre (sin ruta), añadir la ruta base
         if not os.path.dirname(archivo_json):

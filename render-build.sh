@@ -1,0 +1,15 @@
+#!/bin/bash
+# Instalar dependencias del sistema
+apt-get update
+apt-get install -y wget gnupg ca-certificates
+
+# Instalar Chrome
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+apt-get update
+apt-get install -y google-chrome-stable
+
+# Instalar dependencias de Node.js y Python
+npm install
+npx puppeteer browsers install chrome
+pip install -r requirements.txt

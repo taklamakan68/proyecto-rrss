@@ -97,9 +97,10 @@ const downloadVideo = (url, outputPath) => {
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--disable-gpu',
-      '--lang=es-ES,es',
-      '--window-size=1920,1080'
-    ]
+      '--disable-software-rasterizer',
+      '--disable-extensions'
+    ],
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable'
   });
 
   const page = await browser.newPage();

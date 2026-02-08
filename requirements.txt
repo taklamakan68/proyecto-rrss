@@ -1,2 +1,7 @@
 requests
 python-dotenv
+cloudinary
+Pillow
+moviepy
+gTTS
+edge-tts
