@@ -1,3 +1,4 @@
+require('dotenv').config();
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
@@ -234,7 +235,7 @@ const downloadVideo = (url, outputPath) => {
     console.log('   📝 Escribiendo usuario...');
     await page.click(usernameSelector);
     await sleep(300);
-    await page.type(usernameSelector, 'asianmagicmakeup', { delay: 100 });
+    await page.type(usernameSelector, process.env.INSTAGRAM_USERNAME, { delay: 100 });
     await sleep(1000);
     
     // Esperar a que el campo de contraseña aparezca
@@ -246,7 +247,7 @@ const downloadVideo = (url, outputPath) => {
     console.log('   🔑 Escribiendo contraseña...');
     await page.click(passwordSelector);
     await sleep(300);
-    await page.type(passwordSelector, 'punarepuna', { delay: 80 });
+    await page.type(passwordSelector, process.env.INSTAGRAM_PASSWORD, { delay: 80 });
     await sleep(500);
     
     // Clic en login
